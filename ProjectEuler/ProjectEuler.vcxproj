@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="MathTools.h" />
     <ClInclude Include="Problem0001.h" />
+    <ClInclude Include="Problem0002.h" />
     <ClInclude Include="ProblemBase.h" />
     <ClInclude Include="Problems.h" />
     <ClInclude Include="stdafx.h" />
@@ -89,6 +90,7 @@
   <ItemGroup>
     <ClCompile Include="MathTools.cpp" />
     <ClCompile Include="Problem0001.cpp" />
+    <ClCompile Include="Problem0002.cpp" />
     <ClCompile Include="ProblemBase.cpp" />
     <ClCompile Include="ProjectEuler.cpp" />
     <ClCompile Include="stdafx.cpp">

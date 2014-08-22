@@ -4,6 +4,7 @@
 using namespace ProjectEuler;
 
 Problem0001::Problem0001()	
+	: ProblemBase()
 {
 	_initializeProblemStatement();
 }

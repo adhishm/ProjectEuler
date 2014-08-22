@@ -62,7 +62,93 @@ bool MathTools::IsPrime(int n)
 		{
 			return false;
 		}
+		++p;
 	}
 
 	return true;
+}
+
+bool MathTools::IsEven(long n)
+{
+	long remainder = n % 2;
+	return (remainder == 0);
+}
+
+bool MathTools::IsOdd(long n)
+{
+	long remainder = n % 2;
+	return (remainder != 0);
+}
+
+long MathTools::FibonacciTerm(int n)
+{
+	if (n < 1)
+	{
+		return 0;
+	}
+
+	if ((n == 1) || (n == 2))
+	{
+		return 1;
+	}
+
+	long a = 1;
+	long b = 1;
+	long c;
+
+	for (int i = 3; i <= n; ++i)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+	}
+
+	return c;
+}
+
+vector<long> MathTools::FibonacciSeries(int n)
+{
+	if (n < 1)
+	{
+		vector<long> f(1,0);
+		return f;
+	}
+
+	vector<long> f(n, 1);
+
+	if (n > 2)
+	{
+		for (int i = 3; i <= n; ++i)
+		{
+			f[i] = f[i - 1] + f[i - 2];
+		}
+	}
+
+	return f;
+}
+
+vector<long> MathTools::FibonacciSeriesLimit(long limit)
+{
+	if (limit < 1)
+	{
+		vector<long> f(1, 0);
+		return f;
+	}
+
+	vector<long> f(2, 1);
+	long t;
+	int n = 2;
+
+	while (f.back() < limit)
+	{
+		f.push_back(f[n - 1] + f[n - 2]);
+		++n;
+	}
+
+	if (f.back() > limit)
+	{
+		f.pop_back();
+	}
+
+	return f;
 }

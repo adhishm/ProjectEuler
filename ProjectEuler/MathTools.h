@@ -1,6 +1,10 @@
 #pragma once
 
 #include <math.h>
+#include <vector>
+#include <iterator>
+
+using namespace std;
 
 class MathTools
 {
@@ -29,5 +33,10 @@ public:
 	int DigitSum(long n);
 	bool IsMultiple(int product, int factor);
 	bool IsPrime(int n);
+	bool IsEven(long n);
+	bool IsOdd(long n);
+	long FibonacciTerm(int n);
+	vector<long> FibonacciSeries(int n);
+	vector<long> FibonacciSeriesLimit(long limit);
 };
 

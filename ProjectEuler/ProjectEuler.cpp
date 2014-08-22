@@ -40,6 +40,9 @@ ProjectEuler::ProblemBase* getProblem(int problemID)
 	case 1:
 		return (new ProjectEuler::Problem0001());
 		break;
+	case 2:
+		return (new ProjectEuler::Problem0002());
+		break;
 	default:
 		return ((ProjectEuler::ProblemBase*) NULL);
 	}
