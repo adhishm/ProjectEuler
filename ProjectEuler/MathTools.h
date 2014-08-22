@@ -27,5 +27,7 @@ public:
 	double Square(double x);
 	long Factorial(int n);
 	int DigitSum(long n);
+	bool IsMultiple(int product, int factor);
+	bool IsPrime(int n);
 };
 

@@ -3,13 +3,20 @@
 
 using namespace ProjectEuler;
 
-ProblemBase::ProblemBase(string problemStatement)
+ProblemBase::ProblemBase()
 {
-	_problemStatement = problemStatement;
+	_initializeProblemStatement();
+	_answer = 0.0;
+	_math = MathTools::getInstance();
 }
 
 ProblemBase::~ProblemBase()
 {
+}
+
+void ProblemBase::_initializeProblemStatement()
+{
+	_problemStatement = "";
 }
 
 string ProblemBase::getProblemStatement()

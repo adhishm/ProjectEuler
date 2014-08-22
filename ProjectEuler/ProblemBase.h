@@ -2,6 +2,7 @@
 
 #include <string>
 #include <iostream>
+#include "MathTools.h"
 
 using namespace std;
 
@@ -15,15 +16,18 @@ namespace ProjectEuler
 	protected:
 		string _problemStatement;
 		double _answer;
+		MathTools* _math;
+
+		virtual void _initializeProblemStatement();
 	public:
-		ProblemBase(string problemStatement);
+		ProblemBase();
 		virtual ~ProblemBase();
 
 		string getProblemStatement();
 		double getAnswer();
 
 		void displayProblemStatement();
-		void displayAnswer();
+		virtual void displayAnswer();
 
 		virtual void solve();
 	};
