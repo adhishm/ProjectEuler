@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MathTools.h"
 
-MathTools* _instance = (MathTools*) NULL;
+MathTools* MathTools::_instance = (MathTools*) NULL;
 
 MathTools::MathTools()
 {
@@ -42,4 +42,27 @@ int MathTools::DigitSum(long n)
 	}
 
 	return s;
+}
+
+bool MathTools::IsMultiple(int product, int factor)
+{
+	int remainder = product % factor;
+	return (remainder == 0);
+}
+
+bool MathTools::IsPrime(int n)
+{
+	int p = 2;
+	int r;
+
+	while (p <= (n / 2))
+	{
+		r = n % p;
+		if (r == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
