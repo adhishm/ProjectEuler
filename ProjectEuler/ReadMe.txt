@@ -2,6 +2,8 @@
     CONSOLE APPLICATION : ProjectEuler Project Overview
 ========================================================================
 
+Project to contain solutions to problems posted on https://www.projecteuler.net
+
 AppWizard has created this ProjectEuler application for you.
 
 This file contains a summary of what you will find in each of the files that
