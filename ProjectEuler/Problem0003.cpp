@@ -20,4 +20,8 @@ Problem0003::~Problem0003(void)
 
 void Problem0003::solve()
 {
+	long n = 600851475143;
+	vector<long> factors = _math->PrimeFactors(n);
+	_answer = factors.back();
+	factors.clear();
 }
