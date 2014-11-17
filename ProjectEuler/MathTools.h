@@ -38,5 +38,7 @@ public:
 	long FibonacciTerm(int n);
 	vector<long> FibonacciSeries(int n);
 	vector<long> FibonacciSeriesLimit(long limit);
+	bool IsFactor(long n, long f);
+	vector<long> PrimeFactors(long n);
 };
 

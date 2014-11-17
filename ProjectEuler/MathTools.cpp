@@ -152,3 +152,26 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 
 	return f;
 }
+
+bool MathTools::IsFactor(long n, long f)
+{
+	return ( (n%f) == 0 );
+}
+
+vector<long> MathTools::PrimeFactors(long n)
+{
+	vector<long> factors;
+	factors.clear();
+	for (int i=2; i<(n/2); ++i)
+	{
+		if (IsPrime(i))
+		{
+			if (IsFactor(n, i))
+			{
+				factors.push_back(i);
+			}
+		}
+	}
+
+	return factors;
+}
