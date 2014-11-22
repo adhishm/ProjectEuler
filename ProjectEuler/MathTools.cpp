@@ -127,6 +127,7 @@ vector<long> MathTools::FibonacciSeries(int n)
 	return f;
 }
 
+// Returns a vector of integers of the Fibonacci series smaller than the limit given.
 vector<long> MathTools::FibonacciSeriesLimit(long limit)
 {
 	if (limit < 1)
@@ -153,11 +154,13 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 	return f;
 }
 
+// Returns a boolean flag indicating if f is a factor of n.
 bool MathTools::IsFactor(long n, long f)
 {
 	return ( (n%f) == 0 );
 }
 
+// This function returns a vector of prime factors for the integer n given.
 vector<long> MathTools::PrimeFactors(long n)
 {
 	vector<long> factors;
