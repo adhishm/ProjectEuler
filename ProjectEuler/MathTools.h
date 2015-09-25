@@ -40,5 +40,7 @@ public:
 	vector<long> FibonacciSeriesLimit(long limit);
 	bool IsFactor(long n, long f);
 	vector<long> PrimeFactors(long n);
+	long Permutation(int n, int r);
+	long Combination(int n, int r);
 };
 

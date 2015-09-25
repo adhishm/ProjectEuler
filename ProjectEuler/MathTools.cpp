@@ -178,3 +178,23 @@ vector<long> MathTools::PrimeFactors(long n)
 
 	return factors;
 }
+
+long MathTools::Permutation(int n, int r)
+{
+	if ((0==r) || (n==r))
+	{
+		return 1;
+	}
+	
+	return Factorial(n) / Factorial(n-r);
+}
+
+long MathTools::Combination(int n, int r)
+{
+	if ((0==r) || (0==n) || (n==r))
+	{
+		return 1;
+	}
+	
+	return (Permutation(n,r)/Factorial(r));
+}
