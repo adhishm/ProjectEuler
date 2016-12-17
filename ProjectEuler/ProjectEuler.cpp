@@ -29,7 +29,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << endl << "Invalid problem id!" << endl;
 	}
 	
-	
 	return 0;
 }
 
