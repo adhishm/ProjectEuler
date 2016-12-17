@@ -112,13 +112,13 @@
   <ItemGroup>
     <ClInclude Include="MathTools.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="SquareMatrix.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="MathTools.cpp" />
     <ClCompile Include="Matrix.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClCompile Include="SquareMatrix.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

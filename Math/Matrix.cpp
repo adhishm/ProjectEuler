@@ -6,7 +6,7 @@ Matrix::Matrix()
 {
 }
 
-Math::Matrix::Matrix(unsigned int rows, unsigned int cols, double value)
+Matrix::Matrix(unsigned int rows, unsigned int cols, double value)
 {
 	_rows = rows;
 	_cols = cols;
@@ -15,7 +15,7 @@ Math::Matrix::Matrix(unsigned int rows, unsigned int cols, double value)
 }
 
 
-Math::Matrix::Matrix(unsigned int rows, unsigned int cols, double ** m)
+Matrix::Matrix(unsigned int rows, unsigned int cols, double ** m)
 {
 	_rows = rows;
 	_cols = cols;
@@ -28,46 +28,46 @@ Matrix::~Matrix()
 	_free();
 }
 
-void Math::Matrix::SetValue(double value)
+void Matrix::SetValue(double value)
 {
-	for (int i = 0; i < _rows; ++i)
+	for (unsigned int i = 0; i < _rows; ++i)
 	{
-		for (int j = 0; j < _cols; ++j)
+		for (unsigned int j = 0; j < _cols; ++j)
 		{
 			_m[i][j] = value;
 		}
 	}
 }
 
-void Math::Matrix::SetValue(double ** m)
+void Matrix::SetValue(double ** m)
 {
-	for (int i = 0; i < _rows; ++i)
+	for (unsigned int i = 0; i < _rows; ++i)
 	{
-		for (int j = 0; j < _cols; ++j)
+		for (unsigned int j = 0; j < _cols; ++j)
 		{
 			_m[i][j] = m[i][j];
 		}
 	}
 }
 
-unsigned int Math::Matrix::Rows() const
+unsigned int Matrix::Rows() const
 {
 	return _rows;
 }
 
-unsigned int Math::Matrix::Cols() const
+unsigned int Matrix::Cols() const
 {
 	return _cols;
 }
 
-Matrix Math::Matrix::operator+(Matrix m2)
+Matrix Matrix::operator+(Matrix m2)
 {
 	Matrix result(Rows(), Cols());
 	if ((m2.Rows() == Rows()) && (m2.Cols() == Cols()))
 	{
-		for (int i = 0; i < Rows(); ++i)
+		for (unsigned int i = 0; i < Rows(); ++i)
 		{
-			for (int j = 0; j < Cols(); ++j)
+			for (unsigned int j = 0; j < Cols(); ++j)
 			{
 				result(i, j) = _m[i][j] + m2(i, j);
 			}
@@ -76,14 +76,14 @@ Matrix Math::Matrix::operator+(Matrix m2)
 	return result;
 }
 
-Matrix Math::Matrix::operator-(Matrix m2)
+Matrix Matrix::operator-(Matrix m2)
 {
 	Matrix result(Rows(), Cols());
 	if ((m2.Rows() == Rows()) && (m2.Cols() == Cols()))
 	{
-		for (int i = 0; i < Rows(); ++i)
+		for (unsigned int i = 0; i < Rows(); ++i)
 		{
-			for (int j = 0; j < Cols(); ++j)
+			for (unsigned int j = 0; j < Cols(); ++j)
 			{
 				result(i, j) = _m[i][j] + m2(i, j);
 			}
@@ -92,12 +92,12 @@ Matrix Math::Matrix::operator-(Matrix m2)
 	return result;
 }
 
-double & Math::Matrix::operator()(unsigned int i, unsigned int j)
+double & Matrix::operator()(unsigned int i, unsigned int j)
 {
 	return _m[i][j];
 }
 
-void Math::Matrix::_allocate()
+void Matrix::_allocate()
 {
 	if (_m != NULL)
 	{
@@ -105,17 +105,17 @@ void Math::Matrix::_allocate()
 	}
 
 	_m = new double*[_rows];
-	for (int i = 0; i < _rows; ++i)
+	for (unsigned int i = 0; i < _rows; ++i)
 	{
 		_m[i] = new double[_cols];
 	}
 }
 
-void Math::Matrix::_free()
+void Matrix::_free()
 {
 	if (_m != NULL)
 	{
-		for (int i = 0; i < _rows; ++i)
+		for (unsigned int i = 0; i < _rows; ++i)
 		{
 			if (_m[i] != NULL)
 			{
