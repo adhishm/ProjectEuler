@@ -30,11 +30,11 @@ double SquareMatrix::Determinant() const
 	{
 		return _m[0][0];
 	}
-	else 
+	else
 	{
 		for (unsigned int i = 0; i < Size(); ++i)
 		{
-			SquareMatrix cofactor = (SquareMatrix) Cofactor(0, i);
+			SquareMatrix cofactor = (SquareMatrix)Cofactor(0, i);
 			det += _m[0][i] * cofactor.Determinant();
 		}
 	}

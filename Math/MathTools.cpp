@@ -138,7 +138,6 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 	}
 
 	vector<long> f(2, 1);
-	long t;
 	int n = 2;
 
 	while (f.back() < limit)
