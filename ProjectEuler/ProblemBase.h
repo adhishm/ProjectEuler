@@ -16,7 +16,7 @@ namespace ProjectEuler
 	protected:
 		string _problemStatement;
 		double _answer;
-		MathTools* _math;
+		Math::MathTools* _math;
 
 		virtual void _initializeProblemStatement();
 	public:

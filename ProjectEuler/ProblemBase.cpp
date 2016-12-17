@@ -7,7 +7,7 @@ ProblemBase::ProblemBase()
 {
 	_initializeProblemStatement();
 	_answer = 0.0;
-	_math = MathTools::getInstance();
+	_math = Math::MathTools::getInstance();
 }
 
 ProblemBase::~ProblemBase()

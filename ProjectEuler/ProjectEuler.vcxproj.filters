@@ -24,9 +24,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MathTools.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ProblemBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,9 +42,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProjectEuler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MathTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ProblemBase.cpp">
