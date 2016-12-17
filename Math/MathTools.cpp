@@ -185,7 +185,6 @@ long MathTools::MaxPrimeFactor(long double n)
 {
 	long factor = 1;
 	long i = (long)(n / 2);
-
 	while (i >= 2)
 	{
 		if (IsFactor(n, i))
@@ -196,10 +195,8 @@ long MathTools::MaxPrimeFactor(long double n)
 				break;
 			}
 		}
-
 		--i;
 	}
-
 	return factor;
 }
 
