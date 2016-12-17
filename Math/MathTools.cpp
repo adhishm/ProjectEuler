@@ -1,7 +1,8 @@
-#include "stdafx.h"
 #include "MathTools.h"
 
-MathTools* MathTools::_instance = (MathTools*) NULL;
+using namespace Math;
+
+MathTools* MathTools::_instance = (MathTools*)NULL;
 
 MathTools::MathTools()
 {
@@ -110,7 +111,7 @@ vector<long> MathTools::FibonacciSeries(int n)
 {
 	if (n < 1)
 	{
-		vector<long> f(1,0);
+		vector<long> f(1, 0);
 		return f;
 	}
 
@@ -137,7 +138,6 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 	}
 
 	vector<long> f(2, 1);
-	long t;
 	int n = 2;
 
 	while (f.back() < limit)
@@ -157,7 +157,7 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 // Returns a boolean flag indicating if f is a factor of n.
 bool MathTools::IsFactor(long n, long f)
 {
-	return ( (n%f) == 0 );
+	return ((n%f) == 0);
 }
 
 // This function returns a vector of prime factors for the integer n given.
@@ -165,7 +165,7 @@ vector<long> MathTools::PrimeFactors(long double n)
 {
 	vector<long> factors;
 	factors.clear();
-	for (int i=2; i<(n/2); ++i)
+	for (int i = 2; i<(n / 2); ++i)
 	{
 		if (IsPrime(i))
 		{
@@ -184,7 +184,6 @@ long MathTools::MaxPrimeFactor(long double n)
 {
 	long factor = 1;
 	long i = (long)(n / 2);
-
 	while (i >= 2)
 	{
 		if (IsFactor(n, i))
@@ -195,29 +194,27 @@ long MathTools::MaxPrimeFactor(long double n)
 				break;
 			}
 		}
-
 		--i;
 	}
-
 	return factor;
 }
 
 long MathTools::Permutation(int n, int r)
 {
-	if ((0==r) || (n==r))
+	if ((0 == r) || (n == r))
 	{
 		return 1;
 	}
-	
-	return Factorial(n) / Factorial(n-r);
+
+	return Factorial(n) / Factorial(n - r);
 }
 
 long MathTools::Combination(int n, int r)
 {
-	if ((0==r) || (0==n) || (n==r))
+	if ((0 == r) || (0 == n) || (n == r))
 	{
 		return 1;
 	}
-	
-	return (Permutation(n,r)/Factorial(r));
+
+	return (Permutation(n, r) / Factorial(r));
 }
