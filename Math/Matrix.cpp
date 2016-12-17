@@ -6,7 +6,7 @@ Matrix::Matrix()
 {
 }
 
-Matrix::Matrix(unsigned int rows, unsigned int cols, double value)
+Matrix::Matrix(index_type rows, index_type cols, data_type value)
 {
 	_rows = rows;
 	_cols = cols;
@@ -15,7 +15,7 @@ Matrix::Matrix(unsigned int rows, unsigned int cols, double value)
 }
 
 
-Matrix::Matrix(unsigned int rows, unsigned int cols, double ** m)
+Matrix::Matrix(index_type rows, index_type cols, data_type ** m)
 {
 	_rows = rows;
 	_cols = cols;
@@ -28,36 +28,51 @@ Matrix::~Matrix()
 	_free();
 }
 
-void Matrix::SetValue(double value)
+void Matrix::SetValue(data_type value)
 {
-	for (unsigned int i = 0; i < _rows; ++i)
+	for (index_type i = 0; i < _rows; ++i)
 	{
-		for (unsigned int j = 0; j < _cols; ++j)
+		for (index_type j = 0; j < _cols; ++j)
 		{
 			_m[i][j] = value;
 		}
 	}
 }
 
-void Matrix::SetValue(double ** m)
+void Matrix::SetValue(data_type ** m)
 {
-	for (unsigned int i = 0; i < _rows; ++i)
+	for (index_type i = 0; i < _rows; ++i)
 	{
-		for (unsigned int j = 0; j < _cols; ++j)
+		for (index_type j = 0; j < _cols; ++j)
 		{
 			_m[i][j] = m[i][j];
 		}
 	}
 }
 
-unsigned int Matrix::Rows() const
+Matrix::index_type Matrix::Rows() const
 {
 	return _rows;
 }
 
-unsigned int Matrix::Cols() const
+Matrix::index_type Matrix::Cols() const
 {
 	return _cols;
+}
+
+Matrix Matrix::Transpose() const
+{
+	Matrix result(Cols(), Rows());
+
+	for (index_type i = 0; i < Rows(); ++i)
+	{
+		for (index_type j = 0; j < Cols(); ++j)
+		{
+			result(j, i) = _m[i][j];
+		}
+	}
+
+	return result;
 }
 
 Matrix Matrix::operator+(Matrix m2)
@@ -65,9 +80,9 @@ Matrix Matrix::operator+(Matrix m2)
 	Matrix result(Rows(), Cols());
 	if ((m2.Rows() == Rows()) && (m2.Cols() == Cols()))
 	{
-		for (unsigned int i = 0; i < Rows(); ++i)
+		for (index_type i = 0; i < Rows(); ++i)
 		{
-			for (unsigned int j = 0; j < Cols(); ++j)
+			for (index_type j = 0; j < Cols(); ++j)
 			{
 				result(i, j) = _m[i][j] + m2(i, j);
 			}
@@ -81,9 +96,9 @@ Matrix Matrix::operator-(Matrix m2)
 	Matrix result(Rows(), Cols());
 	if ((m2.Rows() == Rows()) && (m2.Cols() == Cols()))
 	{
-		for (unsigned int i = 0; i < Rows(); ++i)
+		for (index_type i = 0; i < Rows(); ++i)
 		{
-			for (unsigned int j = 0; j < Cols(); ++j)
+			for (index_type j = 0; j < Cols(); ++j)
 			{
 				result(i, j) = _m[i][j] + m2(i, j);
 			}
@@ -92,9 +107,21 @@ Matrix Matrix::operator-(Matrix m2)
 	return result;
 }
 
-double & Matrix::operator()(unsigned int i, unsigned int j)
+Matrix::data_type & Matrix::operator()(index_type i, index_type j)
 {
 	return _m[i][j];
+}
+
+void Math::Matrix::Show() const
+{
+	for (index_type i = 0; i < Rows(); ++i)
+	{
+		for (index_type j = 0; j < Cols(); ++j)
+		{
+			std::cout << _m[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 void Matrix::_allocate()
@@ -104,10 +131,10 @@ void Matrix::_allocate()
 		_free();
 	}
 
-	_m = new double*[_rows];
-	for (unsigned int i = 0; i < _rows; ++i)
+	_m = new data_type*[_rows];
+	for (index_type i = 0; i < _rows; ++i)
 	{
-		_m[i] = new double[_cols];
+		_m[i] = new data_type[_cols];
 	}
 }
 
@@ -115,7 +142,7 @@ void Matrix::_free()
 {
 	if (_m != NULL)
 	{
-		for (unsigned int i = 0; i < _rows; ++i)
+		for (index_type i = 0; i < _rows; ++i)
 		{
 			if (_m[i] != NULL)
 			{

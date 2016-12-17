@@ -7,7 +7,7 @@ SquareMatrix::SquareMatrix()
 {
 }
 
-SquareMatrix::SquareMatrix(unsigned int size, double value)
+SquareMatrix::SquareMatrix(Matrix::index_type size, Matrix::data_type value)
 	: Matrix(size, size, value)
 {
 }
@@ -17,14 +17,19 @@ SquareMatrix::~SquareMatrix()
 {
 }
 
-unsigned int SquareMatrix::Size() const
+Matrix::index_type SquareMatrix::Size() const
 {
 	return Rows();
 }
 
-double SquareMatrix::Determinant() const
+bool SquareMatrix::IsInvertible() const
 {
-	double det = 0.0;
+	return (Determinant() == 0.0);
+}
+
+Matrix::data_type SquareMatrix::Determinant() const
+{
+	Matrix::data_type det = 0.0;
 
 	if (Size() == 1)
 	{
@@ -32,7 +37,7 @@ double SquareMatrix::Determinant() const
 	}
 	else
 	{
-		for (unsigned int i = 0; i < Size(); ++i)
+		for (Matrix::index_type i = 0; i < Size(); ++i)
 		{
 			SquareMatrix cofactor = (SquareMatrix)Cofactor(0, i);
 			det += _m[0][i] * cofactor.Determinant();
@@ -42,15 +47,15 @@ double SquareMatrix::Determinant() const
 	return det;
 }
 
-SquareMatrix SquareMatrix::Cofactor(unsigned int i, unsigned int j) const
+SquareMatrix SquareMatrix::Cofactor(Matrix::index_type i, Matrix::index_type j) const
 {
 	SquareMatrix result(Size() - 1);
 
-	int ii = i + 1;
-	int jj = j + 1;
+	Matrix::index_type ii = i + 1;
+	Matrix::index_type jj = j + 1;
 
-	int i_count = 0;
-	int j_count = 0;
+	Matrix::index_type i_count = 0;
+	Matrix::index_type j_count = 0;
 
 	while (ii != i)
 	{
@@ -70,6 +75,43 @@ SquareMatrix SquareMatrix::Cofactor(unsigned int i, unsigned int j) const
 			ii = 0;
 		}
 		++i_count;
+	}
+
+	return result;
+}
+
+SquareMatrix SquareMatrix::Inverse() const
+{
+	SquareMatrix result(Size());
+
+	Matrix::data_type det = Determinant();
+
+	if (det == 0.0)
+	{
+		Matrix cft = CofactorMatrix().Transpose();
+
+		for (Matrix::index_type i = 0; i < Size(); ++i)
+		{
+			for (Matrix::index_type j = 0; j < Size(); ++j)
+			{
+				result(i, j) = cft(i, j) / det;
+			}
+		}
+	}
+
+	return result;
+}
+
+SquareMatrix SquareMatrix::CofactorMatrix() const
+{
+	SquareMatrix result(Size());
+
+	for (Matrix::index_type i = 0; i < Size(); ++i)
+	{
+		for (Matrix::index_type j = 0; j < Size(); ++j)
+		{
+			result(i, j) = Cofactor(i, j).Determinant();
+		}
 	}
 
 	return result;

@@ -8,11 +8,14 @@ namespace Math
 	{
 	public:
 		SquareMatrix();
-		SquareMatrix(unsigned int size, double value = 0.0);
+		SquareMatrix(Matrix::index_type size, Matrix::data_type value = 0.0);
 		virtual ~SquareMatrix();
 
-		SquareMatrix Cofactor(unsigned int i, unsigned int j) const;
+		SquareMatrix Cofactor(Matrix::index_type i, Matrix::index_type j) const;
+		SquareMatrix CofactorMatrix() const;
 		double Determinant() const;
-		unsigned int Size() const;
+		Matrix::index_type Size() const;
+		bool IsInvertible() const;
+		SquareMatrix Inverse() const;
 	};
 }

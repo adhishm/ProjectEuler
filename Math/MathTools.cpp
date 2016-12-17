@@ -51,10 +51,10 @@ bool MathTools::IsMultiple(int product, int factor)
 	return (remainder == 0);
 }
 
-bool MathTools::IsPrime(int n)
+bool MathTools::IsPrime(unsigned int n)
 {
-	int p = 2;
-	int r;
+	unsigned int p = 2;
+	unsigned int r;
 
 	while (p <= (n / 2))
 	{
@@ -155,13 +155,13 @@ vector<long> MathTools::FibonacciSeriesLimit(long limit)
 }
 
 // Returns a boolean flag indicating if f is a factor of n.
-bool MathTools::IsFactor(long n, long f)
+bool MathTools::IsFactor(unsigned int n, unsigned int f)
 {
 	return ((n%f) == 0);
 }
 
 // This function returns a vector of prime factors for the integer n given.
-vector<long> MathTools::PrimeFactors(long double n)
+vector<long> MathTools::PrimeFactors(long n)
 {
 	vector<long> factors;
 	factors.clear();
@@ -180,10 +180,29 @@ vector<long> MathTools::PrimeFactors(long double n)
 }
 
 // Find the largest prime factor of the integer n.
-long MathTools::MaxPrimeFactor(long double n)
+long MathTools::MaxPrimeFactor(long n)
 {
 	long factor = 1;
-	long i = (long)(n / 2);
+	long i = (n / 2);
+	while (i >= 2)
+	{
+		if (IsFactor(n, i))
+		{
+			if (IsPrime(i))
+			{
+				factor = i;
+				break;
+			}
+		}
+		--i;
+	}
+	return factor;
+}
+
+unsigned int MathTools::MaxPrimeFactor(unsigned int n)
+{
+	unsigned int factor = 1;
+	unsigned int i = (n / 2);
 	while (i >= 2)
 	{
 		if (IsFactor(n, i))

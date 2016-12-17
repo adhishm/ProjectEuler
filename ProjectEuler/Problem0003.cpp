@@ -20,6 +20,6 @@ Problem0003::~Problem0003(void)
 
 void Problem0003::solve()
 {
-	long double n = 600851475143;
+	unsigned int n = 600851475143;
 	_answer = _math->MaxPrimeFactor(n);
 }
