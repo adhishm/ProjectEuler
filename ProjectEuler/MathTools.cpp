@@ -161,7 +161,7 @@ bool MathTools::IsFactor(long n, long f)
 }
 
 // This function returns a vector of prime factors for the integer n given.
-vector<long> MathTools::PrimeFactors(long n)
+vector<long> MathTools::PrimeFactors(long double n)
 {
 	vector<long> factors;
 	factors.clear();
@@ -177,6 +177,29 @@ vector<long> MathTools::PrimeFactors(long n)
 	}
 
 	return factors;
+}
+
+// Find the largest prime factor of the integer n.
+long MathTools::MaxPrimeFactor(long double n)
+{
+	long factor = 1;
+	long i = (long)(n / 2);
+
+	while (i >= 2)
+	{
+		if (IsFactor(n, i))
+		{
+			if (IsPrime(i))
+			{
+				factor = i;
+				break;
+			}
+		}
+
+		--i;
+	}
+
+	return factor;
 }
 
 long MathTools::Permutation(int n, int r)
