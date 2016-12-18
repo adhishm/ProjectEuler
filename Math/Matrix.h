@@ -24,6 +24,7 @@ namespace Math
 
 		virtual Matrix operator+(Matrix m2);
 		virtual Matrix operator-(Matrix m2);
+		virtual Matrix operator*(Matrix m2);
 		virtual data_type& operator()(index_type i, index_type j);
 
 		void Show() const;

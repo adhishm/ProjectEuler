@@ -107,6 +107,27 @@ Matrix Matrix::operator-(Matrix m2)
 	return result;
 }
 
+Matrix Matrix::operator*(Matrix m2)
+{
+	Matrix result(Rows(), m2.Cols());
+
+	if (Cols() == m2.Rows())
+	{
+		for (Matrix::index_type i = 0; i < Rows(); ++i)
+		{
+			for (Matrix::index_type j = 0; j < m2.Cols(); ++j)
+			{
+				for (Matrix::index_type k = 0; k < Cols(); ++k)
+				{
+					result(i, j) += _m[i][k] * m2(k, j);
+				}
+			}
+		}
+	}
+
+	return result;
+}
+
 Matrix::data_type & Matrix::operator()(index_type i, index_type j)
 {
 	return _m[i][j];
