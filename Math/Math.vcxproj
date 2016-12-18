@@ -134,14 +134,19 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="huge.h" />
     <ClInclude Include="MathTools.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="SquareMatrix.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="huge.cpp" />
     <ClCompile Include="MathTools.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="SquareMatrix.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

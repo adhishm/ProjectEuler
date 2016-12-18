@@ -27,6 +27,9 @@
     <ClInclude Include="SquareMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="huge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MathTools.cpp">
@@ -38,5 +41,11 @@
     <ClCompile Include="SquareMatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="huge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
