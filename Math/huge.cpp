@@ -2,21 +2,23 @@
 
 using namespace Math;
 
-huge::huge(std::vector<int> digits)
+huge::huge(std::vector<unsigned int> digits, bool positive)
 {
 	_digits.assign(digits.begin(), digits.end());
 	_n = _digits.size();
+	_positive = positive;
 }
 
-huge::huge(int * digits, int n)
+huge::huge(unsigned int * digits, int n, bool positive)
 {
 	if (digits != NULL)
 	{ 
-		Assign(digits, n);
+		Assign(digits, n, positive);
 	}
 	else
 	{
 		_n = 0;
+		_positive = true;
 	}
 }
 
@@ -30,7 +32,7 @@ huge::~huge()
 	_digits.clear();
 }
 
-void huge::Assign(int * digits, int n)
+void huge::Assign(unsigned int * digits, int n, bool positive)
 {
 	_n = n;
 	_digits.clear();
@@ -53,6 +55,7 @@ void huge::Assign(int num)
 		++_n;
 		rem = quo;
 	}
+	_positive = (num >= 0);
 }
 
 int huge::NumDigits() const
@@ -60,7 +63,15 @@ int huge::NumDigits() const
 	return _n;
 }
 
+bool huge::IsPositive() const
+{
+	return _positive;
+}
+
 // Operators
+/*
+* @brief Get the ith digit of the number.
+*/
 int huge::operator()(int i) const
 {
 	if (_digits.size() < i)
@@ -91,7 +102,60 @@ huge Math::huge::operator+(int n) const
 
 huge Math::huge::operator+(huge n) const
 {
-	std::vector<int> result;
+	std::vector<unsigned int> _result;
+	if (n.IsPositive() && this->IsPositive())
+	{
+		// Both are positive
+		int nMax = std::max(n.NumDigits(), this->NumDigits());
+		int carryOver = 0;
+
+		for (int i = 0; i < nMax; ++i)
+		{
+			int r = carryOver + n(i) + (*this)(i);
+			if (r > 10)
+			{
+				carryOver = r / 10;
+				r = r - (10 * carryOver);
+			}
+			else
+			{
+				carryOver = 0;
+			}
+			_result.push_back(r);
+		}
+
+		return huge(_result);
+	}
 
 	return huge(0);
+}
+
+bool huge::operator==(huge n) const
+{
+	if (n.IsPositive() != _positive)
+	{
+		return false;
+	}
+	
+	if (n.NumDigits() != _n)
+	{
+		return false;
+	}
+
+	for (int i = 0; i < _n; ++i)
+	{
+		if (n(i) != _digits[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool huge::operator<(huge n) const
+{
+
+
+	return true;
 }
