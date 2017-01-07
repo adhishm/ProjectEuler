@@ -9,25 +9,33 @@ ProjectEuler::ProblemBase* getProblem(int problemID);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int problemID;
-
-	cout << "Problem ID: ";	cin >> problemID;
-
-	ProjectEuler::ProblemBase* pBase = getProblem(problemID);
-
-	if (NULL != pBase)
+	char c;
+	do
 	{
-		pBase->solve();
+		int problemID;
 
-		pBase->displayProblemStatement();
-		pBase->displayAnswer();
+		cout << "Problem ID: ";	cin >> problemID;
 
-		delete pBase;	pBase = NULL;
-	}
-	else
-	{
-		cout << endl << "Invalid problem id!" << endl;
-	}
+		ProjectEuler::ProblemBase* pBase = getProblem(problemID);
+
+		if (NULL != pBase)
+		{
+			pBase->solve();
+
+			pBase->displayProblemStatement();
+			pBase->displayAnswer();
+
+			delete pBase;	pBase = NULL;
+		}
+		else
+		{
+			cout << endl << "Invalid problem id!" << endl;
+		}
+
+		cout << "Again (y/N)? ";
+		cin >> c;
+
+	} while (c == 'y' || c == 'Y');
 	
 	return 0;
 }
