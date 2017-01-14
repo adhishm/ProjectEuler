@@ -153,9 +153,15 @@ bool huge::operator==(huge n) const
 	return true;
 }
 
+bool Math::huge::operator==(int n) const
+{
+	return ((*this) == huge(n));
+}
+
 bool huge::operator<(huge n) const
 {
-
+	
 
 	return true;
 }
+

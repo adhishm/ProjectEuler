@@ -41,6 +41,7 @@ namespace Math
 		virtual void operator+=(huge n);
 		// Comparison
 		virtual bool operator==(huge n) const;
+		virtual bool operator==(int n) const;
 		virtual bool operator<(huge n) const;
 		virtual bool operator<=(huge n) const;
 		virtual bool operator>(huge n) const;

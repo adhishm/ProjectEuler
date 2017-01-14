@@ -4,8 +4,10 @@
 #include "stdafx.h"
 
 #include "Problems.h"
+#include "Testing.h"
 
 ProjectEuler::ProblemBase* getProblem(int problemID);
+void RunTests();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -29,7 +31,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 		else
 		{
-			cout << endl << "Invalid problem id!" << endl;
+			cout << endl << "Invalid problem id! Running tests." << endl;
+			RunTests();
 		}
 
 		cout << "Again (y/N)? ";
@@ -56,4 +59,9 @@ ProjectEuler::ProblemBase* getProblem(int problemID)
 	default:
 		return ((ProjectEuler::ProblemBase*) NULL);
 	}
+}
+
+void RunTests()
+{
+	Testing::TestMatrix();
 }
